@@ -35,8 +35,9 @@ h3{
 }
 
 IMG.sketch{
+	width:500px;
 	display: block;
 	margin-right: auto;
 	margin-left: auto;
-	padding: 20px;
+	padding: 1s0px;
 }
