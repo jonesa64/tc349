@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<link rel="stylesheet" type="text/css" media="all" href="css/reset.css" />
+<link rel="stylesheet" type="text/css" media="all" href="css/text.css" />
+<link rel="stylesheet" type="text/css" media="all" href="css/960.css" />
+<link href="css/galleria.css" rel="stylesheet" type="text/css" media="screen">
+  <link rel="stylesheet" type="text/css" href="gallery.css" /> 
+
+<script type="text/javascript" src="jquery-1.2.6.min.js"></script> 
+<script type="text/javascript" src="jquery.galleria.js"></script> 
+<script type="text/javascript"> 
+jQuery(function($) { 
+
+$('ul.gallery').galleria({
+			history   : true, // activates the history object for bookmarking, back-button etc.
+			clickNext : true, // helper for making the image clickable
+			insert    : '#main_image', // the containing selector for our main image
+			onImage   : function(image,caption,thumb) { // let's add some image effects for demonstration purposes
+				
+				// fade in the image & caption
+				if(! ($.browser.mozilla && navigator.appVersion.indexOf("Win")!=-1) ) { // FF/Win fades large images terribly slow
+					image.css('display','none').fadeIn(1000);
+				}
+				caption.css('display','none').fadeIn(600);
+				
+				// fetch the thumbnail container
+				var _li = thumb.parents('li');
+				
+				// fade out inactive thumbnail
+				_li.siblings().children('img.selected').fadeTo(500,0.3);
+				
+				// fade in active thumbnail
+				thumb.fadeTo('fast',1).addClass('selected');
+				
+				// add a title for the clickable image
+				image.attr('title','Next image >>');
+			},
+			onThumb : function(thumb) { // thumbnail effects goes here
+				
+				// fetch the thumbnail container
+				var _li = thumb.parents('li');
+				
+				// if thumbnail is active, fade all the way.
+				var _fadeTo = _li.is('.active') ? '1' : '0.3';
+				
+				// fade in the thumbnail when finnished loading
+				thumb.css({display:'none',opacity:_fadeTo}).fadeIn(1000);
+				
+				// hover effects
+				thumb.hover(
+					function() { thumb.fadeTo('fast',1); },
+					function() { _li.not('.active').children('img').fadeTo('fast',0.3); } // don't fade out if the parent is active
+				)
+			}
+		});
+
+
+
+
+
+
+}); 
+</script>
+
+<style media="screen,projection" type="text/css">
+	
+	/* BEGIN DEMO STYLE */
+
+	.gallery li{width:80px;height:60px;border:3px double #111;margin: 0 2px;background:#000; float:left;}
+	.gallery {width:300px;}
+
+    </style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+  
+    <div id='cssmenu'>
+    <ul>
+      <li><a href='index.html'><span>Home</span></a></li>
+
+      <li><a href="history.html"><span>History</span></a></li>
+
+      <li><a href="founders.html"><span>Founders</span></a></li>
+
+      <li><a href='lineage.html'><span>Lineage</span></a></li>
+
+      <li class='active'><a href="gallery.html"><span>Photos</span></a></li>
+
+      <li><a href="calendar.html"><span>Calendar</span></a></li>
+
+      <li><a href='#'><span>Leaders</span></a></li>
+
+      <li><a href="contact.html"><span>Contact</span></a></li>
+    </ul>
+  </div>
+</div>
+
+  
+
+<div id="gallerybox">
+        <div id="title">
+          <h1>Gallery</h1>
+        </div><br />
+
+
+
+<div class="container_12">
+<div class="grid_4">    
+        <ul class="gallery"> 
+			<li class="active"><img src="../pictures/169955_10100662115662004_787300422_o.jpg"alt="1"></li> 
+            <li><img src="../pictures/169955_10100662115662004_787300422_o.jpg" alt="2"></li> 
+            <li><img src="../pictures/309134_10152128827250512_1758064123_n.jpg"  alt="3"></li> 
+            <li><img src="../pictures/311102_10151094408507400_1819921642_n.jpg"  alt="4"></li> 
+            <li><img src="../pictures/392385_10150940118549409_808768371_n - Copy.jpg"  alt="5"></li> 
+            <li><img src="../pictures/522565_10150660548907400_1831516404_n - Copy.jpg"  alt="6"></li> 
+            <li><img src="../pictures/539448_10151203326241171_1987716060_n.jpg" alt="7"></li> 
+            <li><img src="../pictures/549133_4067819106492_1963296137_n.jpg" alt="8"></li> 
+            <li><img src="../pictures/680377_10151085094852400_1942088658_o.jpg" alt="9"></li> 
+            <li><img src="../pictures/IMG_1107.JPG" alt="10"></li> 
+            <li><img src="../pictures/KappaAlphaPsi 1.jpg" alt="11"></li> 
+            <li><img src="./images/12.jpg"  alt="12"></li> 
+		</ul>
+        
+	</div>
+	<!-- end .grid_4 -->
+	<div class="grid_8">
+
+			<div id="main_image"></div>
+	</div>
+    </div>
+    <div class="clear">&nbsp;</div>
+    <div class="container_16">
+    <div class="grid_2">
+		<p>&nbsp;</p>
+	</div>
+    
+      
+        
+       
+
+    
+        <div class="grid_2">
+		<p>&nbsp;</p>
+	</div>
+    </div>
+    </div>
+   
+  <div id="footer">
+   
+  </div>
+</body>
+</html>
